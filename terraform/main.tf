@@ -16,7 +16,7 @@ resource "aws_default_vpc" "default" {
 
 resource "aws_instance" "http_server" {
   count                  = 2
-  ami                    = "INSERT AMI HERE"
+  ami                    = "ami-066784287e358dad1"
   key_name               = "default-ec2"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.http_server_sg.id]
