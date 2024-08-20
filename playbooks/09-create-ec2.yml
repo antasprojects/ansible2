@@ -1,0 +1,17 @@
+- hosts: localhost
+  tasks:
+    - amazon.aws.ec2_instance:
+        key_name: default-ec2
+        instance_type: t2.micro
+        image_id: ami-06373f703eb245f45
+        region: eu-west-2
+        # count: 1
+        exact_count: 0
+        vpc_subnet_id: subnet-0eeb7f785f204d6b6
+        network: 
+            assign_public_ip: true
+        security_group: http_server_sg
+        tags: {type: http, Environment: QA}
+        wait: yes
+      register: ec2_output
+    - debug: var=ec2_output
